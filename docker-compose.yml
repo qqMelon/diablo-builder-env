@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  # The Database was not exposed externaly
+  # Use Adminer UI to intercat with it. 
+  # Also expose ports
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PWD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
